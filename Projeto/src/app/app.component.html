@@ -1,61 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/Projeto/src/styles.css">
-</head>
-<body>
-
-
-<body>
-    
-  <div class="conteudo">
-
-      <div class="conteudo_titulo">
-
-          <h1>Atendimento On-line</h1>
-
-      </div>
-
-      <div class="conteudo_chat">
-
-          <div class="conteudo_chat_usuario"><p>Atendente</p></div>
-          <div class="conteudo_chat_mensagem">BLA BLA BLA</div>
-          <div class="conteudo_chat_usuario"><p>Atendente</p></div>
-          <div class="conteudo_chat_mensagem">BLA BLA BLA</div>
-          <div class="conteudo_chat_usuario_voce"><p>Você</p></div>
-          <div class="conteudo_chat_mensagem_voce">BLA BLA BLA</div>
-          <div class="conteudo_chat_usuario_voce"><p>Você</p></div>
-          <div class="conteudo_chat_mensagem_voce">BLA BLA BLA</div>
-
-
-      </div>
-
-      <div class="conteudo_enviarmen">
-
-          <form >
-          <div class="conteudo_enviarmen_digite">
-
-              <input value = "" id="mensagem" required type="text" name= "mensagem" placeholder="Digite uma mensagem">
-              
-          </div>
-
-
-          <div class="conteudo_enviarmen_enviar">
-
-              <button type="submit" id="enviar">Enviar</button>
-
-          </div>
-          </form>
-
-      </div>
-
-
+<div class="conteudo"> 
+  <div class="conteudo_titulo">
+    <h1>Atendimento On-line</h1>
   </div>
 
+  <div class="conteudo_chat">
+    <ng-container *ngFor="let msg of mensagens">
+      <div
+        [ngClass]="{
+          'conteudo_chat_usuario': msg.autor === 'atendente',
+          'conteudo_chat_usuario_voce': msg.autor === 'voce'
+        }"
+      >
+        <p>{{ msg.autor === 'voce' ? 'Você' : 'Atendente' }}</p>
+      </div>
+      <div
+        [ngClass]="{
+          'conteudo_chat_mensagem': msg.autor === 'atendente',
+          'conteudo_chat_mensagem_voce': msg.autor === 'voce'
+        }"
+      >
+        {{ msg.texto }}
+      </div>
+    </ng-container>
+  </div>
 
+  <div class="conteudo_enviarmen">
+    <form (ngSubmit)="enviarMensagem()">
+      <div class="conteudo_enviarmen_digite">
+        <input
+          [(ngModel)]="novaMensagem"
+          name="mensagem"
+          required
+          type="text"
+          placeholder="Digite uma mensagem"
+        />
+      </div>
 
-  
-</body>
+      <div class="conteudo_enviarmen_enviar">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
