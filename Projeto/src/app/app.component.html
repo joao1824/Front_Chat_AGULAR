@@ -5,21 +5,11 @@
 
   <div class="conteudo_chat">
     <ng-container *ngFor="let msg of mensagens">
-      <div
-        [ngClass]="{
-          'conteudo_chat_usuario': msg.autor === 'atendente',
-          'conteudo_chat_usuario_voce': msg.autor === 'voce'
-        }"
-      >
-        <p>{{ msg.autor === 'voce' ? 'Você' : 'Atendente' }}</p>
+      <div class="conteudo_chat_usuario_voce">
+        <p>Você</p>
       </div>
-      <div
-        [ngClass]="{
-          'conteudo_chat_mensagem': msg.autor === 'atendente',
-          'conteudo_chat_mensagem_voce': msg.autor === 'voce'
-        }"
-      >
-        {{ msg.texto }}
+      <div class="conteudo_chat_mensagem_voce">
+        {{ msg }}
       </div>
     </ng-container>
   </div>
