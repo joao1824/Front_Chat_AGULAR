@@ -1,1 +1,0 @@
-Aluno João Henrique Camilo Fogaça
