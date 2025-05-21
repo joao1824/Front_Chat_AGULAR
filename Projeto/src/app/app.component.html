@@ -1,34 +1,47 @@
-<div class="conteudo"> 
-  <div class="conteudo_titulo">
-    <h1>Atendimento On-line</h1>
-  </div>
+<div  class="tudo">
+  <div class="conteudo"> 
+    <div class="conteudo_titulo">
+      <h1>Atendimento On-line</h1>
+    </div>
 
   <div class="conteudo_chat">
-    <ng-container *ngFor="let msg of mensagens">
-      <div class="conteudo_chat_usuario_voce">
-        <p>Você</p>
-      </div>
-      <div class="conteudo_chat_mensagem_voce">
-        {{ msg }}
-      </div>
-    </ng-container>
-  </div>
+        <div class="conteudo_chat_usuario"><p>Atendente</p></div>
+        <div class="conteudo_chat_mensagem">BLA BLA BLA</div>
+        <div class="conteudo_chat_usuario"><p>Atendente</p></div>
+        <div class="conteudo_chat_mensagem">BLA BLA BLA</div>
 
+        <div *ngFor="let mensagem of mensagens">
+          <div    class="conteudo_chat_usuario_voce">
+            {{mensagem.usuario}} 
+            </div>
+          <div class="conteudo_chat_mensagem_voce">
+            {{mensagem.mensagem}} 
+        </div>
+        
+          </div>
+  </div>
   <div class="conteudo_enviarmen">
-    <form (ngSubmit)="enviarMensagem()">
-      <div class="conteudo_enviarmen_digite">
-        <input
-          [(ngModel)]="novaMensagem"
-          name="mensagem"
-          required
-          type="text"
-          placeholder="Digite uma mensagem"
-        />
-      </div>
+      <form >
+        <div class="conteudo_enviarmen_digite">
+          <input
+          [(ngModel)] = "mensagem_voce"
+            name="mensagem"
+            required
+            type="text"
+            placeholder="Digite uma mensagem"
+          />
+        </div>
 
-      <div class="conteudo_enviarmen_enviar">
-        <button type="submit">Enviar</button>
-      </div>
-    </form>
-  </div>
+        <div class="conteudo_enviarmen_enviar">
+          <button name="enviar" 
+          (click)="addMensagem()"
+          type="submit">Enviar</button>
+
+        </div>
+      </form>
+    </div>      
+
+        
+    
 </div>
+  

@@ -10,20 +10,17 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  novaMensagem: string = '';
-  mensagens: string[] = [];
+    
+    mensagens = [
 
-  enviarMensagem(event?: Event) {
-    event?.preventDefault();
+      { usuario: 'Você',mensagem: 'Blababla'},
+      { usuario: 'Você' ,mensagem:'Blababla'}
+    ];
 
-    if (this.novaMensagem.trim()) {
-      this.mensagens.push(this.novaMensagem.trim());
-      this.novaMensagem = '';
-
-      setTimeout(() => {
-        const chat = document.querySelector('.conteudo_chat');
-        if (chat) chat.scrollTop = chat.scrollHeight;
-      });
+    mensagem_voce = ''
+    addMensagem(){  
+      this.mensagens.push({ usuario: 'Você' ,mensagem: this.mensagem_voce });
+      this.mensagem_voce = '';
     }
-  }
+
 }
